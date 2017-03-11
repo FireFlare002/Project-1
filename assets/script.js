@@ -1,6 +1,4 @@
-
-
- var config = {
+var config = {
     apiKey: "AIzaSyD2O0mFIFPWg0ujWbqwyk20dbpnHA77-Pc",
     authDomain: "my-virtual-fridge.firebaseapp.com",
     databaseURL: "https://my-virtual-fridge.firebaseio.com",
@@ -18,22 +16,27 @@ var firstArray =[];
 
 database.ref().on("child_added", function(snapshot) {
 
+  
   firstArray.push(snapshot.val().Input);
 
   console.log(firstArray);
 
   $("#flex-box").empty();
 
-   for (i=0 ;  i < firstArray ; i++) {
+   for (i=0 ; i < firstArray.length ; i++) {
 
-  	var items = $('<div class="item-button">');
+    var container =$('<div class="button-item">');
+    var items = $('<div>');
+    items.attr( 'data-buttons' , firstArray[i]);
+    items.text(firstArray[i]);
+    var del = $('<p class="delete">' + "X" + '</p>');
+    container.append(del);
+    container.append(items);
 
-  	items.attr( 'data-buttons' , firstArray[i]);
+    
 
-  	items.text(firstArray[i]);
-
-    $("#flex-box").prepend(items);
- 
+  $("#flex-box").prepend(container);
+  
   }
 
   
@@ -58,13 +61,11 @@ Input: input,
 
 
 
-});	
+}); 
 
 
 
 
 
 });
-
-
 
