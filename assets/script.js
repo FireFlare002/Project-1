@@ -69,3 +69,16 @@ Input: input,
 
 });
 
+//Ajax calls
+$.ajax({
+    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
+    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+    data: {}, // Additional parameters here
+    dataType: 'json',
+    success: function(data) { console.dir((data.source)); },
+    error: function(err) { alert(err); },
+    beforeSend: function(xhr) {
+    xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+    }
+});
+
