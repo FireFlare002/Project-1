@@ -14,35 +14,41 @@ var firstArray =[];
 
 
 
+
 database.ref().on("child_added", function(snapshot) {
 
   
   firstArray.push(snapshot.val().Input);
-
-  console.log(firstArray);
 
   $("#flex-box").empty();
 
    for (i=0 ; i < firstArray.length ; i++) {
 
     var container =$('<div class="button-item">');
+    container.addClass(firstArray[i]);
     var items = $('<div>');
-    items.attr( 'data-buttons' , firstArray[i]);
     items.text(firstArray[i]);
     var del = $('<p class="delete">' + "X" + '</p>');
+    del.attr( 'data-buttons' , firstArray[i]);
     container.append(del);
     container.append(items);
+    console.log(container);
+
 
   $("#flex-box").prepend(container);
   
   }
 
 
-// $(".delete").on("click" , function() {
+ $(document).on("click" , ".delete" , function () {
 
+  var itemID = $(this).attr('data-buttons');
 
+  console.log(itemID);
 
-// });  
+ $("." +itemID).empty();
+
+ });  
 
 
 });
@@ -94,7 +100,8 @@ Input: input,
 
 });
 
-Ajax calls
+//Ajax calls
+
  $.ajax({
      url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
      type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
