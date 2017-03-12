@@ -33,14 +33,43 @@ database.ref().on("child_added", function(snapshot) {
     container.append(del);
     container.append(items);
 
-    
-
   $("#flex-box").prepend(container);
   
   }
 
-  
 
+// $(".delete").on("click" , function() {
+
+
+
+// });  
+
+
+});
+
+
+
+$("#mainInput").on(function (e){
+
+if(e.keyCode === 13) {
+
+e.preventDefault();
+
+
+var input = $("#mainInput").val().trim();
+
+$("#mainInput").val("");
+
+
+database.ref().push({
+
+Input: input,
+
+});
+
+
+}
+        
 });
 
 
@@ -50,35 +79,31 @@ $("#add-button").on("click" , function() {
 
 event.preventDefault();
 
-var input = $(".form-control").val();
+var input = $("#mainInput").val().trim();
 
-$(".form-control").val("");
+$("#mainInput").val("");
+
 
 database.ref().push({
 
-
 Input: input,
 
-
-
-}); 
-
-
+});
 
 
 
 });
 
-//Ajax calls
-$.ajax({
-    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
-    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-    data: {}, // Additional parameters here
-    dataType: 'json',
-    success: function(data) { console.dir((data.source)); },
-    error: function(err) { alert(err); },
-    beforeSend: function(xhr) {
-    xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
-    }
-});
+Ajax calls
+ $.ajax({
+     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
+     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+     data: {}, // Additional parameters here
+     dataType: 'json',
+     success: function(data) { console.dir((data.source)); },
+     error: function(err) { alert(err); },
+     beforeSend: function(xhr) {
+     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+     }
+ });
 
