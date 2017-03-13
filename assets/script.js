@@ -18,6 +18,7 @@ var firstArray =[];
 database.ref().on("child_added", function(snapshot) {
 
   
+  
   firstArray.push(snapshot.val().Input);
 
   $("#flex-box").empty();
@@ -32,7 +33,6 @@ database.ref().on("child_added", function(snapshot) {
     del.attr( 'data-buttons' , firstArray[i]);
     container.append(del);
     container.append(items);
-    console.log(container);
 
 
   $("#flex-box").prepend(container);
@@ -42,12 +42,15 @@ database.ref().on("child_added", function(snapshot) {
 
  $(document).on("click" , ".delete" , function () {
 
-  var itemID = $(this).attr('data-buttons');
-
-  console.log(itemID);
+  var itemID = $(this).attr('data-buttons');  
 
  $("." +itemID).empty();
 
+ var removedItem = database.ref().child(input);
+
+ removedItem.remove();
+
+                            
  });  
 
 
@@ -69,7 +72,10 @@ $("#mainInput").val("");
 
 database.ref().push({
 
+
 Input: input,
+
+
 
 });
 
@@ -85,6 +91,8 @@ $("#add-button").on("click" , function() {
 
 event.preventDefault();
 
+if ($("#mainInput").val() !=  ""   ) {
+
 var input = $("#mainInput").val().trim();
 
 $("#mainInput").val("");
@@ -95,6 +103,8 @@ database.ref().push({
 Input: input,
 
 });
+
+}
 
 
 
