@@ -27,7 +27,7 @@ database.ref().on("child_added", function(snapshot) {
 
     var container =$('<div class="button-item">');
     container.addClass(firstArray[i]);
-    var items = $('<div>');
+    var items = $('<div class="item">');
     items.text(firstArray[i]);
     var del = $('<p class="delete">' + "X" + '</p>');
     del.attr( 'data-buttons' , firstArray[i]);
