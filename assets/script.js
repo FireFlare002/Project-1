@@ -106,9 +106,25 @@ Input: input,
 
 }
 
+else {
+
+
+$(document.body).append("<div id='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>")
+
+$(".windows-popup").show(100);
+
+$("#pop-button").on("click" , function () {
+
+$("#shadow").hide()
+$(".windows-popup").hide();  
+
+});
+
+}
 
 
 });
+
 
 //Ajax calls
 
