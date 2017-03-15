@@ -33,11 +33,20 @@ database.ref().on("child_added", function(snapshot) {
     del.attr( 'data-buttons' , firstArray[i]);
     container.append(del);
     container.append(items);
+	$("#flex-box").prepend(container);
+    }
 
 
-  $("#flex-box").prepend(container);
-  
-  }
+
+$('.button-item').on('click', function(event) {
+
+    $(this).toggleClass('button-item-selected');
+   });
+
+
+
+
+
 
 
  $(document).on("click" , ".delete" , function () {
@@ -55,13 +64,6 @@ database.ref().on("child_added", function(snapshot) {
 
 
 });
-
-
-$('.button-item').on('click', function(event) {
-
-    $(this).toggleClass('button-item-selected');
-   });
-
 
 
 
