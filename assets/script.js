@@ -57,6 +57,13 @@ database.ref().on("child_added", function(snapshot) {
 });
 
 
+$('.button-item').on('click', function(event) {
+
+    $(this).toggleClass('button-item-selected');
+   });
+
+
+
 
 $("#mainInput").on(function (e){
 
@@ -115,8 +122,8 @@ $(".windows-popup").show(100);
 
 $("#pop-button").on("click" , function () {
 
-$("#shadow").hide()
 $(".windows-popup").hide();  
+$("#shadow").hide();
 
 });
 
