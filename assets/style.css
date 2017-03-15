@@ -145,6 +145,23 @@ a {
     .fa .fa-user #login-icon:focus {
         font-color: #7DBF27;
     }
+
+/*#flex-box .button-item:hover,
+#flex-box .button-item:focus {
+    background-color: #eee;
+}*/
+
+/*#flex-box .button-item:active {
+    background-color: #7DBF27;
+} */
+
+.button-item-selected
+{
+    
+    color: #fff;
+    background: #7DBF27
+}
+
 /*
  * -- EMAIL STYLES --
  * Styles relevant to the email messages, labels, counts, and more.
@@ -214,8 +231,10 @@ button[type=submit] {
 }
 
 .button-item {
-        margin-left: 15px;
-        margin-right: 0.5em;
+        /*margin-left: 10px;*/
+        /*margin-right: 0.5em;*/
+        padding-left: 10px;
+        padding-right: 0.5em;
         display: flex;
     }
 .delete  { 
