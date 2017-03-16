@@ -1,6 +1,160 @@
+
+@import "http://fonts.googleapis.com/css?family=Raleway";
+
+#abc {
+width:100%;
+height:100%;
+opacity:.95;
+top:0;
+left:0;
+display:none;
+position:fixed;
+background-color:#313131;
+overflow:auto
+}
+img#closepop {
+width:20px;
+height:20px;
+position:absolute;
+right:5px;
+top:5px;
+cursor:pointer
+}
+div#popupContact {
+position:absolute;
+left:50%;
+top:17%;
+margin-left:-202px;
+font-family:'Raleway',sans-serif
+}
+#formpop {
+max-width:425px;
+min-width:350px;
+padding:10px 50px;
+border:2px solid gray;
+border-width: 2px;
+border-radius:10px;
+font-family:raleway;
+background-color:#fff
+}
+
+form #formpop {
+    margin:0;
+    padding-left: 10px;
+}
+
+#signupheader {
+background-color:#3A3D45;
+border:2px solid gray;
+color: #fff;
+padding:20px 35px;
+margin:-10px -50px;
+text-align:center;
+border-radius:6px 6px 0 0
+}
+hr {
+margin:10px -50px;
+border:0;
+border-top:1px solid #ccc
+}
+input[type=text] {
+width:82%;
+border:1px solid #ccc;
+padding-left:40px;
+padding-right:20px;
+font-size:16px;
+font-family:raleway
+}
+
+#name-input {
+ height: 40px;
+ margin-top: 30px;
+ padding-left: 40px; 
+ padding-right:20px;
+ border-radius: 7px;
+}
+
+#email-input {
+width:82%;
+height:40px;
+padding:0;
+resize:none;
+margin-top:30px;
+border:1px solid #ccc;
+border-radius: 5px;
+padding-left:40px;
+padding-right: 20px;
+font-size:16px;
+font-family:raleway;
+margin-bottom:20px
+
+}
+
+#comment-input {
+width:82%;
+height:100px;
+resize:none;
+border-radius: 5px;
+margin-top:30px;
+border:1px solid #ccc;
+padding-left:40px;
+padding-right:20px;
+padding-top: 10px;
+font-size:16px;
+font-family:raleway;
+margin-bottom:30px
+}
+#submit-input {
+margin: auto;
+margin-bottom: 25px;
+text-decoration:none;
+width:125px;
+text-align:center;
+display:block;
+background-color:#7DBF27;
+color:#fff;
+border:1px solid #FFCB00;
+padding:10px 0;
+font-size:20px;
+cursor:pointer;
+border-radius:5px
+}
+span {
+color:red;
+font-weight:700
+}
+
+.fa-user:before {
+    /* "login-icon"float: right;*/
+    /*padding-top: 10px;*/
+    /*padding-right: 10px;*/
+    color: #7DBF27;
+    /*text-align: center;*/
+
+ }
+
+
 body {
     color: #333;
 }
+
+
+#popupContact {
+
+display: none;
+z-index: 10;
+
+
+
+}
+
+#login-icon:hover {
+
+cursor: pointer;
+
+
+}
+
 
 .windows-popup {
 
@@ -53,7 +207,7 @@ h1{
   border-radius: 19px;
   font-family: Arial;
   color: #ffffff;
-  font-size:25px;
+  font-size: 27px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   margin-left: 100%;
@@ -82,7 +236,6 @@ h1{
 
 
 }
-
 
 a {
     text-decoration: none;
@@ -227,23 +380,6 @@ a {
     .fa .fa-user #login-icon:focus {
         font-color: #7DBF27;
     }
-
-/*#flex-box .button-item:hover,
-#flex-box .button-item:focus {
-    background-color: #eee;
-}*/
-
-/*#flex-box .button-item:active {
-    background-color: #7DBF27;
-} */
-
-.button-item-selected
-{
-    
-    color: #fff;
-    background: #7DBF27
-}
-
 /*
  * -- EMAIL STYLES --
  * Styles relevant to the email messages, labels, counts, and more.
@@ -313,10 +449,8 @@ button[type=submit] {
 }
 
 .button-item {
-        /*margin-left: 10px;*/
-        /*margin-right: 0.5em;*/
-        padding-left: 10px;
-        padding-right: 0.5em;
+        margin-left: 15px;
+        margin-right: 0.5em;
         display: flex;
     }
 .delete  { 
@@ -334,9 +468,16 @@ p {
     margin-top: 10px;
 }
 /* main content
+
+
+
 */
+
+
+
 .recipe-content {
     padding: 30px;
+    
 }
 
 /*
