@@ -160,15 +160,14 @@ var pass = $('input:password').val();
 
 if(  promise.catch(e => console.log(e.message)) ) {
 
-alert("Email taken, please input another email.");
+
+promise.catch(e => console.log(e.message));
 
 }
 
- promise.catch(e => console.log(e.message));
-
-
-
 });
+
+
 
 
 $("#submit-login").click(
