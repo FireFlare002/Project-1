@@ -1,5 +1,251 @@
+
+@import "http://fonts.googleapis.com/css?family=Raleway";
+
+#abc {
+width:100%;
+height:100%;
+opacity:.95;
+top:0;
+left:0;
+display:none;
+position:fixed;
+background-color:#313131;
+overflow:auto
+}
+img#closepop {
+width:20px;
+height:20px;
+position:absolute;
+right:5px;
+top:5px;
+cursor:pointer
+}
+div#popupContact {
+position:absolute;
+left:50%;
+top:17%;
+margin-left:-202px;
+font-family:'Raleway',sans-serif
+}
+#formpop {
+max-width:600px;
+min-width:600px;
+height:80%;
+padding:0px 50px;
+font-family:raleway;
+background-color:#fff;
+}
+
+form #formpop {
+    margin:0;
+    padding-left: 10px;
+}
+
+#signupheader {
+font-size: 24px;
+color: #A0A0A0;
+padding:15px 35px;
+margin:-10px -50px;
+text-align:left;
+}
+   
+#signupdescription {
+text-align:left;
+margin-left:-10px;
+
+}
+hr {
+margin:10px -50px;
+}
+input[type=text] {
+width:100%;
+padding-left:20px;
+padding-right:10px;
+font-size:16px;
+font-family:raleway
+}
+
+#name-input {
+ width:100%;
+ height: 40px;
+ margin-top: 10px;
+ padding-left: 10px; 
+ padding-right:10px;
+}
+
+#email-input {
+width:100%;
+height:40px;
+padding:0;
+resize:none;
+margin-top:7px;
+padding-left:10px;
+padding-right: 10px;
+font-size:16px;
+font-family:raleway;
+
+}
+
+#password-input {
+width:100%;
+height:40px;
+padding:0;
+resize:none;
+margin-top:7px;
+padding-left:40px;
+padding-right: 10px;
+font-size:16px;
+font-family:raleway;
+
+
+}
+
+#comment-input {
+width:100%;
+height:90px;
+resize:none;
+margin-top:7px;
+margin-bottom: 10px;
+padding-left:10px;
+padding-right:20px;
+padding-top: 10px;
+font-size:16px;
+font-family:raleway;
+}
+#submit-signUp {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+    vertical-align: middle;
+    background: #41ccb4;
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #fff;
+    
+}
+}
+span {
+color:red;
+font-weight:700
+}
+
+/*.fa-user:before {
+    /* "login-icon"float: right;*/
+    /*padding-top: 10px;*/
+    /*padding-right: 10px;*/
+    /*color: #7DBF27;*/
+    /*text-align: center;*/
+
+ }
+
+
 body {
     color: #333;
+}
+
+
+#popupContact {
+
+display: none;
+z-index: 10;
+
+
+
+}
+
+#login-icon:hover {
+
+cursor: pointer;
+
+
+}
+
+
+.windows-popup {
+
+white-space: nowrap;
+position: relative;
+padding: 10em 20em 10em 20em;
+height:40vh;  
+background-color: white;
+color:black;
+z-index: 10;
+position: relative;
+bottom: 4em;
+right:3em;
+display: none;
+}
+
+
+h1{
+
+    text-align: center;
+    padding-left: 20%;
+    padding-top: 3%;
+
+
+}
+
+
+.wp-content {
+
+    position: relative;
+    height:100vh;
+    width:100vw;
+    bottom:140px;
+    right:100%;
+    width:50vw;
+}
+
+
+
+#pop-button {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  width:8vw;
+  -webkit-border-radius: 19;
+  -moz-border-radius: 19;
+  border-radius: 19px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 27px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  margin-left: 100%;
+  margin-top: 18%;
+  cursor: pointer;
+}
+
+#pop-button:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+#pop-button:active {
+
+ background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+
+
 }
 
 a {
@@ -82,33 +328,28 @@ a {
     height: 40px;
     position: relative;
     /*background: rgb(37, 42, 58);*/
-    background: #3A3D45;
+    /*background: #3A3D45;*/
+    background: #7DBF27;
     text-align: center;
     font-weight: lighter;
 
 }
-/* Show the "Menu" button on phones */
-#nav .nav-menu-button {
+
+.fridge-image {
     display: block;
-    top: 0.5em;
-    right: 0.5em;
-    position: absolute;
+    width: 5%;
+    vertical-align: middle;
+    padding-top: 5px;
+    /*padding-right: 50px;*/
+
 }
-/* When "Menu" is clicked, the navbar should be 80% height */
-#nav.active {
-    height: 80%;
-}
+
 /* Don't show the navigation items... */
 .nav-inner {
     display: none;
     color: white;
 }
 
-/* ...until the "Menu" button is clicked */
-#nav.active .nav-inner {
-    display: block;
-    padding: 2em 0;
-}
 /*
  * -- NAV BAR STYLES --
  * Styling the default .pure-menu to look a little more unique.
@@ -118,11 +359,6 @@ a {
     border: none;
     text-align: left;
 }
-    #nav .pure-menu-link:hover,
-    #nav .pure-menu-link:focus {
-        /*background: rgb(55, 60, 90);*/
-        background-color: #4E5057;
-    }
 
 
 
@@ -144,7 +380,22 @@ a {
     .fa .fa-user #login-icon:hover,
     .fa .fa-user #login-icon:focus {
         font-color: #7DBF27;
+        height:10px;
+        width:10px;
     }
+
+/*#flex-box .button-item:hover,
+#flex-box .button-item:focus {
+    background-color: #eee;
+    
+}*/
+
+.button-item-selected
+{
+    
+    color: #fff;
+    background: #fd625e;
+}
 /*
  * -- EMAIL STYLES --
  * Styles relevant to the email messages, labels, counts, and more.
@@ -200,27 +451,57 @@ a {
 .pure-form input[type=text] {
     border-radius: 0px;
     box-shadow: 0px 0px white;
+    width: 74%;
     float: left;
 }
 
 .pure-form 
 button[type=submit] {
         margin: .0em 0 0;
+        margin-left: 10px;
+        background-color: #F05733;
     }
 
 #add-button {
     border-radius: 0px;
     margin-left: 10px;
+    padding-bottom: 14px;
+    
 }
 
+.button-item {
+        /*margin-left: 15px;*/
+        padding-right: 15px;
+        /*margin-right: 0.5em;*/
+        display: flex;
+    }
+.delete  { 
+        /*margin-right: 0.5em;*/
+        margin-left: 15px;
+    }
+.item {
+    margin-left: 10px;
+    padding-top: 10px;
+}
 h4 {
     padding: 0px;
     margin-right: 0px;
 }
+
+p {
+    margin-top: 10px;
+}
 /* main content
+
+
+
 */
+
+
+
 .recipe-content {
     padding: 30px;
+    
 }
 
 /*
@@ -262,6 +543,7 @@ h4 {
         display: none;
     }
 
+
     #list {
         margin-left: -350px;
         width: 100%;
@@ -269,6 +551,13 @@ h4 {
         border-bottom: 1px solid #ddd;
         margin-right: 200px;
     }
+.fridge-image {
+    display: block;
+    width: 100%;
+    padding-top: 30px;
+    vertical-align: middle;
+
+}
 
     #main {
         position: fixed;
@@ -301,6 +590,14 @@ h4 {
         border-right: 1px solid #ddd;
     }
 
+
+.fridge-image {
+    display: block;
+    width: 100%;
+    padding-top: 30px;
+    vertical-align: middle;
+
+}
 
 
     /* This will now take up it's own column, so don't need position: fixed; */

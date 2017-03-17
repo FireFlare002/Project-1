@@ -1,80 +1,271 @@
-
-
- var config = {
+var config = {
     apiKey: "AIzaSyD2O0mFIFPWg0ujWbqwyk20dbpnHA77-Pc",
     authDomain: "my-virtual-fridge.firebaseapp.com",
     databaseURL: "https://my-virtual-fridge.firebaseio.com",
     storageBucket: "my-virtual-fridge.appspot.com",
     messagingSenderId: "639848607205"
-  };
+};
 
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var firstArray =[];
-
+var firstArray = [];
 
 
 database.ref().on("child_added", function(snapshot) {
 
-  firstArray.push(snapshot.val().Input);
 
-  console.log(firstArray);
+    firstArray.push(snapshot.val().Input);
 
-  $("#flex-box").empty();
+    $("#flex-box").empty();
 
-   for (i=0 ;  i < firstArray ; i++) {
+    for (i = 0; i < firstArray.length; i++) {
 
-  	var container = $('<div>');
+        var container = $('<div class="button-item">');
+        container.addClass(firstArray[i]);
+        var items = $('<div class="item">');
+        items.text(firstArray[i]);
+        var del = $('<p class="delete">' + "X" + '</p>');
+        del.attr('data-buttons', firstArray[i]);
+        container.append(del);
+        container.append(items);
 
-  	var items = $('<div>');
 
-  	var checkbox = $('<input type="checkbox">');
+        $("#flex-box").prepend(container);
 
-  	items.attr( 'data-buttons' , firstArray[i]);
-
-  	items.text(snapshot.val().firstArray[i]);
-
-    container.addClass('item-button');
-
-  	container.preprend(checkbox);
-
-  	container.append(items);
- 	
-    $("#flex-box").append(container);
- 
-  }
-
-  
-
-});
+    }
 
 
 
+    $('.button-item').on('click', function(event) {
 
-$("#add-button").on("click" , function() {
-
-event.preventDefault();
-
-var input = $(".form-control").val();
-
-$(".form-control").val("");
-
-database.ref().push({
+        $(this).toggleClass('button-item-selected');
+    });
 
 
-Input: input,
+    $(document).on("click", ".delete", function() {
+
+        var itemID = $(this).attr('data-buttons');
+
+        $("." + itemID).empty();
 
 
 
-});	
-
-
-
+    });
 
 
 });
 
 
 
+$("#mainInput").on(function(e) {
+
+    if (e.keyCode === 13) {
+
+        e.preventDefault();
+
+
+        var input = $("#mainInput").val().trim();
+
+        $("#mainInput").val("");
+
+
+        database.ref().push({
+
+
+            Input: input,
+
+
+
+        });
+
+
+    }
+
+});
+
+
+
+
+$("#add-button").on("click", function() {
+
+    event.preventDefault();
+
+    if ($("#mainInput").val() != "") {
+
+        var input = $("#mainInput").val().trim();
+
+        $("#mainInput").val("");
+
+
+        database.ref().push({
+
+            Input: input,
+
+        });
+
+    } else {
+
+        $(document.body).append("<div class='shadow' id='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>");
+        $(".windows-popup").show(100);
+
+        $("#pop-button").on("click", function() {
+
+            $(".windows-popup").hide();
+            $("#shadow").remove();
+
+        });
+
+    }
+
+});
+
+
+
+
+$("#login-icon").click(function () { formRedux();
+
+});
+
+
+
+
+function formRedux() {
+
+
+    $(document.body).append("<div id='shadow' class='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>");
+
+    $("#popupContact").show(100);
+
+
+    //Login Users 
+
+
+    const auth = firebase.auth()
+
+
+    $("#submit-signUp").click(
+
+        function() {
+
+            var email = $("#email-input").val();
+
+            var pass = $('input:password').val();
+
+            const promise = auth.createUserWithEmailAndPassword(email, pass).then(function() {
+
+
+                 if  ( window.console) {
+
+                        $(".shadow").remove();
+
+                        $("#popupContact").hide();
+
+                        $("#email-input").val("");
+                        $('input:password').val("");
+
+                      }
+          
+
+                    });
+        });
+
+
+    $("#submit-login").click(
+
+        function() {
+
+            var email = $("#email-input").val();
+            const pass = $('input:password').val();
+
+            const promise = auth.signInWithEmailAndPassword(email, pass).then(function (firebaseUser) {
+
+         
+
+              if (window.console ) {
+
+                // promise.catch(e => console.log(e.message));
+                $("#shadow").remove();
+                $("#popupContact").hide();
+                $("#email-input").val("");
+                $('input:password').val("");
+
+              }
+
+              else {
+
+                $('<div class="alert"> There seems to be a problem </div>')
+
+              }
+
+            });
+
+        });
+
+
+
+
+    $("#submit-logout").on("click", function() {
+
+
+        auth.signOut().then(function() {
+
+            $("#shadow").remove();
+            $("#popupContact").hide();
+
+            $("#email-input").val("");
+            $('input:password').val("");
+
+             window.close();
+
+              $(document.body).append("<div id='shadow' class='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>");
+              
+
+             
+
+
+        });
+
+
+    });
+
+
+};
+
+
+
+
+
+
+
+firebase.auth().onAuthStateChanged(firebaseUser => {
+
+    if (firebaseUser) {
+
+
+     console.log(firebaseUser);
+
+
+    } else {
+
+        formRedux();
+
+
+    }
+
+});
+
+//Ajax calls
+
+// $.ajax({
+//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
+//     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+//     data: {}, // Additional parameters here
+//     dataType: 'json',
+//     success: function(data) { console.dir((data.source)); },
+//     error: function(err) { alert(err); },
+//     beforeSend: function(xhr) {
+//     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+//     }
+// });
