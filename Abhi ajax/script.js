@@ -259,7 +259,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 //Ajax calls
 
 // $.ajax({
-//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
+//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. here we will add our array as well, currently adding it breaks the firebase not surre why yet but I tried an alternative way to call as can be seen below
 //     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
 //     data: {}, // Additional parameters here
 //     dataType: 'json',
