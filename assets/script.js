@@ -4,226 +4,268 @@ var config = {
     databaseURL: "https://my-virtual-fridge.firebaseio.com",
     storageBucket: "my-virtual-fridge.appspot.com",
     messagingSenderId: "639848607205"
-  };
+};
 
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var firstArray =[];
+var firstArray = [];
 
 
 database.ref().on("child_added", function(snapshot) {
 
-  
-  firstArray.push(snapshot.val().Input);
 
-  $("#flex-box").empty();
+    firstArray.push(snapshot.val().Input);
 
-   for (i=0 ; i < firstArray.length ; i++) {
+    $("#flex-box").empty();
 
-    var container =$('<div class="button-item">');
-    container.addClass(firstArray[i]);
-    var items = $('<div class="item">');
-    items.text(firstArray[i]);
-    var del = $('<p class="delete">' + "X" + '</p>');
-    del.attr( 'data-buttons' , firstArray[i]);
-    container.append(del);
-    container.append(items);
+    for (i = 0; i < firstArray.length; i++) {
 
-
-  $("#flex-box").prepend(container);
-  
-  }
+        var container = $('<div class="button-item">');
+        container.addClass(firstArray[i]);
+        var items = $('<div class="item">');
+        items.text(firstArray[i]);
+        var del = $('<p class="delete">' + "X" + '</p>');
+        del.attr('data-buttons', firstArray[i]);
+        container.append(del);
+        container.append(items);
 
 
+        $("#flex-box").prepend(container);
 
-$('.button-item').on('click', function(event) {
-
-     $(this).toggleClass('button-item-selected');
-   });
-
-
- $(document).on("click" , ".delete" , function () {
-
-  var itemID = $(this).attr('data-buttons');  
-
- $("." +itemID).empty();
-                            
- });  
-
-
-});
+    }
 
 
 
-$("#mainInput").on(function (e){
+    $('.button-item').on('click', function(event) {
 
-if(e.keyCode === 13) {
-
-e.preventDefault();
-
-
-var input = $("#mainInput").val().trim();
-
-$("#mainInput").val("");
+        $(this).toggleClass('button-item-selected');
+    });
 
 
-database.ref().push({
+    $(document).on("click", ".delete", function() {
+
+        var itemID = $(this).attr('data-buttons');
+
+        $("." + itemID).empty();
 
 
-Input: input,
 
+    });
 
 
 });
 
 
-}
-        
-});
+
+$("#mainInput").on(function(e) {
+
+    if (e.keyCode === 13) {
+
+        e.preventDefault();
+
+
+        var input = $("#mainInput").val().trim();
+
+        $("#mainInput").val("");
+
+
+        database.ref().push({
+
+
+            Input: input,
 
 
 
-
-$("#add-button").on("click" , function() {
-
-event.preventDefault();
-
-if ($("#mainInput").val() !=  ""   ) {
-
-var input = $("#mainInput").val().trim();
-
-$("#mainInput").val("");
+        });
 
 
-database.ref().push({
-
-Input: input,
-
-});
-
-}
-
-else {
-
-$(document.body).append("<div class='shadow' id='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>");
-$(".windows-popup").show(100);
-
-$("#pop-button").on("click" , function () {
-
-$(".windows-popup").hide();
-$("#shadow").remove();
-
-});
-
-}
+    }
 
 });
 
 
 
 
+$("#add-button").on("click", function() {
 
-$("#login-icon").on("click" , function () {
+    event.preventDefault();
 
+    if ($("#mainInput").val() != "") {
 
-$(document.body).append("<div id='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>");
+        var input = $("#mainInput").val().trim();
 
-$("#popupContact").show(100);
-
-});
-
-var name = $("#name-input").val();
+        $("#mainInput").val("");
 
 
+        database.ref().push({
 
+            Input: input,
 
+        });
 
-var comment = $("#comment-input").val();
+    } else {
 
+        $(document.body).append("<div class='shadow' id='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>");
+        $(".windows-popup").show(100);
 
-//Login Users 
+        $("#pop-button").on("click", function() {
 
+            $(".windows-popup").hide();
+            $("#shadow").remove();
 
-const auth = firebase.auth()
+        });
 
-
-$("#submit-signUp").click(
-
-function () {
-
-var email = $("#email-input").val();
-var pass = $('input:password').val();	
-
- const promise = auth.createUserWithEmailAndPassword(email, pass);
-
-if(  promise.catch(e => console.log(e.message)) ) {
-
-
-promise.catch(e => console.log(e.message));
-
-}
+    }
 
 });
 
 
 
 
-$("#submit-login").click(
-
-function () {
-
-var email = $("#email-input").val();
-const pass = $('input:password').val();
-
-const promise = auth.signInWithEmailAndPassword(email, pass);
-
-promise.catch(e => console.log(e.message));
-
-
+$("#login-icon").click(function () { formRedux();
 
 });
 
 
- $("#submit-logout").on("click" , function() {
 
 
-auth.signOut();
+function formRedux() {
 
 
- });
+    $(document.body).append("<div id='shadow' class='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>");
+
+    $("#popupContact").show(100);
+
+
+    //Login Users 
+
+
+    const auth = firebase.auth()
+
+
+    $("#submit-signUp").click(
+
+        function() {
+
+            var email = $("#email-input").val();
+
+            var pass = $('input:password').val();
+
+            const promise = auth.createUserWithEmailAndPassword(email, pass).then(function() {
+
+
+                 if  ( window.console) {
+
+                        $(".shadow").remove();
+
+                        $("#popupContact").hide();
+
+                        $("#email-input").val("");
+                        $('input:password').val("");
+
+                      }
+          
+
+                    });
+        });
+
+
+    $("#submit-login").click(
+
+        function() {
+
+            var email = $("#email-input").val();
+            const pass = $('input:password').val();
+
+            const promise = auth.signInWithEmailAndPassword(email, pass).then(function (firebaseUser) {
+
+         
+
+              if (window.console ) {
+
+                // promise.catch(e => console.log(e.message));
+                $("#shadow").remove();
+                $("#popupContact").hide();
+                $("#email-input").val("");
+                $('input:password').val("");
+
+              }
+
+              else {
+
+                $('<div class="alert"> There seems to be a problem </div>')
+
+              }
+
+            });
+
+        });
+
+
+
+
+    $("#submit-logout").on("click", function() {
+
+
+        auth.signOut().then(function() {
+
+            $("#shadow").remove();
+            $("#popupContact").hide();
+
+            $("#email-input").val("");
+            $('input:password').val("");
+
+             window.close();
+
+              $(document.body).append("<div id='shadow' class='shadow' style='position:fixed;left:0px;top:0px;width:100%; height:100%; background:gainsboro; opacity: 0.4;'></div>");
+              
+
+             
+
+
+        });
+
+
+    });
+
+
+};
 
 
 
 
 
- firebase.auth().onAuthStateChanged(firebaseUser => {
 
-if (firebaseUser) {
 
- console.log(firebaseUser)
+firebase.auth().onAuthStateChanged(firebaseUser => {
 
- }  else {
+    if (firebaseUser) {
 
- 
-  console.log("problem");
 
- }
+     console.log(firebaseUser);
 
- });
+
+    } else {
+
+        formRedux();
+
+
+    }
+
+});
 
 //Ajax calls
 
- // $.ajax({
- //     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
- //     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
- //     data: {}, // Additional parameters here
- //     dataType: 'json',
- //     success: function(data) { console.dir((data.source)); },
- //     error: function(err) { alert(err); },
- //     beforeSend: function(xhr) {
- //     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
- //     }
- // });
-
+// $.ajax({
+//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients', // The URL to the API. You can get this in the API page of the API you intend to consume
+//     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+//     data: {}, // Additional parameters here
+//     dataType: 'json',
+//     success: function(data) { console.dir((data.source)); },
+//     error: function(err) { alert(err); },
+//     beforeSend: function(xhr) {
+//     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+//     }
+// });
