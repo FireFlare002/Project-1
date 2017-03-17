@@ -317,33 +317,28 @@ a {
     height: 40px;
     position: relative;
     /*background: rgb(37, 42, 58);*/
-    background: #3A3D45;
+    /*background: #3A3D45;*/
+    background: #7DBF27;
     text-align: center;
     font-weight: lighter;
 
 }
-/* Show the "Menu" button on phones */
-#nav .nav-menu-button {
+
+.fridge-image {
     display: block;
-    top: 0.5em;
-    right: 0.5em;
-    position: absolute;
+    width: 5%;
+    vertical-align: middle;
+    padding-top: 5px;
+    /*padding-right: 50px;*/
+
 }
-/* When "Menu" is clicked, the navbar should be 80% height */
-#nav.active {
-    height: 80%;
-}
+
 /* Don't show the navigation items... */
 .nav-inner {
     display: none;
     color: white;
 }
 
-/* ...until the "Menu" button is clicked */
-#nav.active .nav-inner {
-    display: block;
-    padding: 2em 0;
-}
 /*
  * -- NAV BAR STYLES --
  * Styling the default .pure-menu to look a little more unique.
@@ -353,11 +348,6 @@ a {
     border: none;
     text-align: left;
 }
-    #nav .pure-menu-link:hover,
-    #nav .pure-menu-link:focus {
-        /*background: rgb(55, 60, 90);*/
-        background-color: #4E5057;
-    }
 
 
 
@@ -380,6 +370,19 @@ a {
     .fa .fa-user #login-icon:focus {
         font-color: #7DBF27;
     }
+
+/*#flex-box .button-item:hover,
+#flex-box .button-item:focus {
+    background-color: #eee;
+    
+}*/
+
+.button-item-selected
+{
+    
+    color: #fff;
+    background: #F05733;
+}
 /*
  * -- EMAIL STYLES --
  * Styles relevant to the email messages, labels, counts, and more.
@@ -435,28 +438,36 @@ a {
 .pure-form input[type=text] {
     border-radius: 0px;
     box-shadow: 0px 0px white;
+    width: 74%;
     float: left;
 }
 
 .pure-form 
 button[type=submit] {
         margin: .0em 0 0;
+        margin-left: 10px;
+        background-color: #F05733;
     }
 
 #add-button {
     border-radius: 0px;
     margin-left: 10px;
+    padding-bottom: 14px;
+    
 }
 
 .button-item {
-        margin-left: 15px;
-        margin-right: 0.5em;
+        /*margin-left: 15px;*/
+        padding-right: 15px;
+        /*margin-right: 0.5em;*/
         display: flex;
     }
 .delete  { 
-        margin-right: 0.5em;
+        /*margin-right: 0.5em;*/
+        margin-left: 15px;
     }
 .item {
+    margin-left: 10px;
     padding-top: 10px;
 }
 h4 {
@@ -519,6 +530,7 @@ p {
         display: none;
     }
 
+
     #list {
         margin-left: -350px;
         width: 100%;
@@ -526,6 +538,13 @@ p {
         border-bottom: 1px solid #ddd;
         margin-right: 200px;
     }
+.fridge-image {
+    display: block;
+    width: 100%;
+    padding-top: 30px;
+    vertical-align: middle;
+
+}
 
     #main {
         position: fixed;
@@ -558,6 +577,14 @@ p {
         border-right: 1px solid #ddd;
     }
 
+
+.fridge-image {
+    display: block;
+    width: 100%;
+    padding-top: 30px;
+    vertical-align: middle;
+
+}
 
 
     /* This will now take up it's own column, so don't need position: fixed; */
