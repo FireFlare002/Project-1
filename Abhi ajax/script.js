@@ -270,25 +270,46 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 //     }
 // });
 
-$("button").on("click", function() {
-      var recipies = $(this).attr("firstArray");
-      var queryURL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients" +
-        person; 
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-        dataType: 'json',
-    success: function(data) { console.dir((data.source)); },
+function doIt() { 
+ var output = $.ajax({
+    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients' + firstArray, // The URL to the API. 
+    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+    data: {}, // Additional parameters here
+    dataType: 'json',
+    success: function(data) {
+        //
+        //Change data.source to data.something , where something is whichever part of the object you want returned.
+        //To see the whole object you can output it to your browser console using:
+        //console.log(data);
+        console.log(data);
+        // document.getElementById("output").innerHTML = data.source; 
+        },
     error: function(err) { alert(err); },
     beforeSend: function(xhr) {
     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
     }
-    })
-    .done(function(response) {
-        var results = response.data;
-        console.log(results)
-    });
+})
+};
+
+// $("button").on("click", function() {
+//       var recipies = $(this).attr("firstArray");
+//       var queryURL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients" +
+//         person; 
+
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//         dataType: 'json',
+//     success: function(data) { console.dir((data.source)); },
+//     error: function(err) { alert(err); },
+//     beforeSend: function(xhr) {
+//     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+//     }
+//     })
+//     .done(function(response) {
+//         var results = response.data;
+//         console.log(results)
+//     });
 
 
 // function getRecipes(){
