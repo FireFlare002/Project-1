@@ -175,23 +175,33 @@ var ingredients = JSON.stringify(testarray);
 // console.log(ingredients)
 // console.log(testarray)
 
-function doIt() { 
- var output = $.ajax({
-    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients' + testarray, // The URL to the API. 
-    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-    data: {}, // Additional parameters here
-    dataType: 'json',
-    success: function(data) {
-        //
-        //Change data.source to data.something , where something is whichever part of the object you want returned.
-        //To see the whole object you can output it to your browser console using:
-        //console.log(data);
-        console.log(data);
-        document.getElementById("demo").innerHTML = data.source; 
-        },
-    error: function(err) { alert(err); },
-    beforeSend: function(xhr) {
-    xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
-    }
-})
-};
+//recipe request, printing to console
+// $.ajax({
+//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1',
+//     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+//     data: {}, //JSON.stringify({testarray}), //Additional parameters here
+//     dataType: 'json',
+//     success: function(data) {
+//     document.getElementById("demo").innerHTML = data; 
+//      console.log((data)); },
+//     error: function(err) { alert(err); },
+//     beforeSend: function(xhr) {
+//     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+//     }
+// });
+
+// //quick answer api currently printing to console
+// $.ajax({
+//     //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer',
+//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer?q=How+much+vitamin+c+is+in+2+apples%3F',
+//     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+//     data: {}, // Additional parameters here
+//     dataType: 'json',
+//     success: function(data) { 
+//         document.getElementById("demo2").innerHTML = data;
+//         console.log((data)); },
+//     error: function(err) { alert(err); },
+//     beforeSend: function(xhr) {
+//     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+//     }
+// });
