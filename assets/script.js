@@ -198,69 +198,23 @@ function request(arraytest) {
                 var item = data[i];
                 var title = item.title;
                 var image = item.image;
+                var id = item.id;
                 //console.log(title, image);
                 $('#demo').append('<h1>'+title+'</h1>');
                 $('#demo').append('<img src="'+image+'">');
+                $('#demo').append('<p>' + id + '</p>');
                 $('#demo').append('<br>');
-            }
 
-        },
-            error: function(err) { alert(err); },
-            beforeSend: function(xhr) {
-            xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
-        }
-    });
-}
-
-// var recipes = JSON.parse(data)
-// function createHTML() {
-//     var title = [];
-//     var img = [];
-//     var nameSpan = [];
-//     var ingredientsMissing = [];
-
-//     recipeContainer = document.createElement("div");
-//     recipeContainer.setAttribute("id", "recipeContainer");
-//     for (var i = 0; i < recipes.length; i++) {
-//          //Create a new div in each loop with an id of recipeDiv0, recipeDiv1... so you get a div for each recipe
-//          recipeDiv[i] = document.createElement("div");
-//          recipeDiv[i].setAttribute("id", "recipeDiv" + i);
-
-//          //Create span with id of nameSpan0, nameSpan1... to contain name of dish; and create and append the actual name of dish to said span
-//          nameSpan[i] = document.createElement("span");
-//          nameSpan[i].setAttribute("id", "nameSpan" + i);
-//          title[i] = document.createTextNode(recipes[i].title);
-//          nameSpan[i].appendChild(title[i]);
-
-//          //         //Create img tag with id of img0, im1... to contain image;
-//          img[i] = document.createElement("img");
-//          img[i].setAttribute("id", "img" + i);
-//          img[i].setAttribute("src", recipes[i].image);
-
-//          //Create span with id of ingredientsMissingSpan0, ingredientsMissingSpan1... to contain number of missing ingredients; and create and append textNode containing the actual number of missing ingredients to said span
-//          ingredientsMissingSpan[i] = document.createElement("span");
-//          ingredientsMissingSpan[i].setAttribute("id", "ingredientsMissingSpan" + i);
-//          ingredientsMissing[i] = document.createTextNode("Number of missing ingredients: " + recipes[i].missedIngredientCount);
-//          ingredientsMissingSpan[i].appendChild(ingredientsMissing[i]);
-
-//          recipeContainer.appendChild(recipeDiv[i]);
-//          } 
-//      }
-// document.body.appendChild(demo);
-
-// createHTML();
-
-// function getAnswer(){
-
+//                     function calories(){
 
 // $.ajax({
 //     //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer',
-//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer?q=How+much+vitamin+c+is+in+2+apples%3F',
+//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/{id}/information',
 //     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-//     data: {}, //{answer: inputValu}, // Additional parameters here
+//     data: {id: id}, // Additional parameters here
 //     dataType: 'json',
 //     success: function(data) { 
-//         document.getElementById("demo2").innerHTML = data;
+//         // document.getElementById("demo2").innerHTML = data;
 //         console.log((data)); },
 //     error: function(err) { alert(err); },
 //     beforeSend: function(xhr) {
@@ -268,6 +222,43 @@ function request(arraytest) {
 //     }
 //  })
 // };
+//  calories();
+               
+
+
+
+
+
+            }// end of for loop
+
+
+        },//end of success
+            error: function(err) { alert(err); },
+            beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+        }
+    });
+}
+
+
+
+ function calories(){
+
+$.ajax({
+    //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer',
+    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/{id}/information',
+    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+    data: {id: id}, //{answer: inputValu}, // Additional parameters here
+    dataType: 'json',
+    success: function(data) { 
+        // document.getElementById("demo2").innerHTML = data;
+        console.log((data)); },
+    error: function(err) { alert(err); },
+    beforeSend: function(xhr) {
+    xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+    }
+ })
+};
 
 // $("#mainInput").on(function(e) {
 //     if (e.keyCode === 13) {
