@@ -13,6 +13,33 @@ var database = firebase.database();
 var firstArray = [];
 
 
+$(document).on("click"  , ".delete" , function (snapshot) {
+
+var selectedItem = $(this).attr('data-buttons');
+
+
+database.ref().orderByChild("Input").equalTo(selectedItem).once('value', function(snapshot){
+
+        snapshot.forEach(function(data) {
+        database.ref(data.key).remove();
+
+  });
+});
+
+});
+
+
+
+$("#clear-button").on("click" , function () {
+
+$("#flex-box").remove();
+
+ database.ref().remove();
+
+  });
+
+
+
 database.ref().on("child_added", function(snapshot) {
 
 
@@ -124,11 +151,30 @@ $("#add-button").on("click", function() {
 
 
 
-$("#login-icon").click(function () { formRedux();
+$("#login-icon").click(function () { 
+
+
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+
+
+     if (firebaseUser) {
+
+
+     console.log("Your not allowed in (you're already logged in)!");
+
+
+    } 
+
+
+    else {
+
+    formRedux();
+}
+
 
 });
 
-
+});
 
 
 function formRedux() {

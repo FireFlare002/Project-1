@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<title>Document</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
@@ -24,10 +24,7 @@
       <i class="fa fa-user fa-2x col-xs-2 col-md-1" aria-hidden="true"></i>
         <h2 id="signupheader">Sign Up</h2> 
     <hr>
-        <div class="form-group">
-            <input class="form-control" id="name-input" type="text" placeholder="Name">
-         </div>
-
+    
         <div class="form-group">
            <input class="form-control" id="email-input" type="email" placeholder="Email">
             </div>
@@ -38,12 +35,12 @@
             </div>
 
         <div class="form-group">
-            <textarea class="form-control" id="comment-input" rows="5" placeholder="How did you find us?"></textarea>
+        <div id="login-box">
             <div id="submit-signUp">Sign Up</div>
             <div id="submit-login"> Login </div>
             <div id="submit-logout"> Logout </div>
         </div>
-      
+        </div>      
       </form>
    </div>
 </div>
@@ -56,10 +53,10 @@
 <div>
   <nav class="navbar navbar-default" style="background-color: #3A3D45">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand col-xs-10 col-md-11" href="#"><i style="font-weight: lighter; letter-spacing: 2px">my virtual</i> FRIDGE</a>
-           <i class="fa fa-user fa-2x col-xs-2 col-md-1" id="login-icon" aria-hidden="true"></i> 
-        </div>
+    	<div class="navbar-header">
+      		<a class="navbar-brand col-xs-10 col-md-11" href="#"><i style="font-weight: lighter; letter-spacing: 2px">my virtual</i> KITCHEN</a>
+           <i class="fa fa-user fa-2x col-xs-2 col-md-1" id="login-icon" aria-hidden="true"></i> -->
+    	</div>
 
     </div>
     
@@ -68,22 +65,103 @@
 
 <div id="layout" class="content pure-g">
     <div id="nav" class="pure-u">
-    <img class="fridge-image" src="assets/img/common/refrigerator-512.png" >
+    <a href="#" class="nav-menu-button">Menu</a>
+
+        <!-- <div class="nav-inner">
+          <button class="primary-button pure-button">Categories</button>
+            <div class="pure-menu">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="category-label-diary"></span>Diary</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="category-label-meat"></span>Meats</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="category-label-fruit"></span>Fruits</a></li>
+                </ul>
+            </div>
+        </div> -->
     </div>
 
     <div id="list" class="pure-u-1">
         <div class="category-list pure-g">
         <form class="pure-form">
-          <input class="pure-input-2-3" id="mainInput" type="text" placeholder="Type Category Item">
+          <input class="pure-input-2-3" id="mainInput" type="text" placeholder="Type Item">
           <button type="submit" class="pure-button" id="add-button">Add</button>
+            <button type="submit" class="pure-button" id="clear-button">Clear Fridge</button>
         </form>
 
         </div>
-        
-        <div id="flex-box"></div>
+
+        <div class="category-list pure-g">
+        <form class="pure-form">
+          <input class="pure-input-2-3" id="mainInput" type="text" placeholder="Calorie Search">
+          <button type="submit" class="pure-button" id="add-button">Find</button>
+        </form>
+
+       </div>
+		
+		<div id="flex-box"></div>
 
 
+  
 
+
+     <!--    <div class="category-list pure-g">
+            <label for="option-one" class="pure-checkbox">
+                <input id="option-one" type="checkbox" value="">
+            </label>
+        <img width="40" height="40" alt="milk-carton-image" class="image-avatar" src="assets/img/common/milk-carton.png">
+            <div class="pure-u-3-4">
+             <!<h4 class="category-Item">Milk</h4>    -->          
+          <!--   </div>
+        </div> --> 
+
+        <!-- <div class="category-list pure-g">
+            <label for="option-one" class="pure-checkbox">
+                <input id="option-one" type="checkbox" value="">
+            </label>
+        <img width="40" height="40" alt="milk-carton-image" class="image-avatar" src="assets/img/common/milk-carton.png">
+            <div class="pure-u-3-4">
+                <h4 class="category-Item">Condensed Milk</h4>
+            </div>
+        </div>
+
+        <div class="category-list pure-g">
+            <label for="option-one" class="pure-checkbox">
+                <input id="option-one" type="checkbox" value="">
+            </label>
+        <img width="40" height="40" alt="milk-carton-image" class="image-avatar" src="assets/img/common/milk-carton.png">
+            <div class="pure-u-3-4">
+                <h4 class="category-Item">Cream</h4>
+            </div>
+        </div>
+
+        <div class="category-list pure-g">
+            <label for="option-one" class="pure-checkbox">
+                <input id="option-one" type="checkbox" value="">
+            </label>
+        <img width="40" height="40" alt="milk-carton-image" class="image-avatar" src="assets/img/common/milk-carton.png">
+            <div class="pure-u-3-4">
+                <h4 class="category-Item">Cheese</h4>
+            </div>
+        </div>
+
+        <div class="category-list pure-g">
+            <label for="option-one" class="pure-checkbox">
+                <input id="option-one" type="checkbox" value="">
+            </label>
+        <img width="40" height="40" alt="milk-carton-image" class="image-avatar" src="assets/img/common/milk-carton.png">
+            <div class="pure-u-3-4">
+                <h4 class="category-Item">Cheddar</h4>
+            </div>
+        </div>
+
+        <div class="category-list pure-g">
+            <label for="option-one" class="pure-checkbox">
+                <input id="option-one" type="checkbox" value="">
+            </label>
+        <img width="40" height="40" alt="milk-carton-image" class="image-avatar" src="assets/img/common/milk-carton.png">
+            <div class="pure-u-3-4">
+                <h4 class="category-Item">Egg</h4>
+            </div>
+        </div> -->
 
     </div>
 
