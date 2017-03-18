@@ -609,3 +609,42 @@ p {
 
 }
 
+/*Begins media query for sign up*/
+@media screen and (min-device-width: 640px;) and (max-device-width:980px;) {
+ #abc {
+    position: static;
+    width: 100%;
+}
+ #formpop {
+    width: 100%;
+}
+
+#submit-signUp {
+    width: 100%; 
+    text-align: center;
+}
+input[type=text]{
+    width: 100%;
+}
+
+}
+
+@media only screen and (max-device-width: 768px) {
+#abc {
+    position:static;
+    width: 100%;
+}
+ #formpop {
+    width: 100%;
+}
+
+#submit-signUp {
+    width: 100%; 
+}
+input[type=text]{
+    width: 100%;
+}
+
+}
+/*Ends media query for signup*/
+
