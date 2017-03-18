@@ -53,6 +53,8 @@ database.ref().on("child_added", function(snapshot) {
         var itemID = $(this).attr('data-buttons');
         $("." + itemID).empty();
     });
+    arraytest = JSON.stringify(firstArray);
+    request(arraytest);
 });
 
 $("#mainInput").on(function(e) {
@@ -168,28 +170,33 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 // document.getElementById("demo").innerHTML = ingredients;
 // console.log(ingredients)
 
+
 //stringify using test array for functionality
 var testarray = ["eggs", "milk", "butter"];
 var ingredients = JSON.stringify(testarray);
 //document.getElementById("demo").innerHTML = ingredients;//test display
 // console.log(ingredients)
-// console.log(testarray)
+console.log(firstArray);
+var arraytest = JSON.stringify(firstArray);
+//console.log("arraytest: " + arraytest);
 
-//recipe request, printing to console
-// $.ajax({
-//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1',
-//     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-//     data: {}, //JSON.stringify({testarray}), //Additional parameters here
-//     dataType: 'json',
-//     success: function(data) {
-//     document.getElementById("demo").innerHTML = data; 
-//      console.log((data)); },
-//     error: function(err) { alert(err); },
-//     beforeSend: function(xhr) {
-//     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
-//     }
-// });
-
+function request(arraytest) {
+    // //recipe request, printing to console
+    $.ajax({
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients',
+        type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+        data: {ingredients: arraytest}, //JSON.stringify({testarray}), //Additional parameters here
+        dataType: 'json',
+        success: function(data) {
+            var data2 = JSON.stringify(data);
+            document.getElementById("demo").innerHTML= data2;
+            console.log((data)); },
+            error: function(err) { alert(err); },
+            beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+        }
+    });
+}
 // //quick answer api currently printing to console
 // $.ajax({
 //     //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer',
@@ -205,3 +212,21 @@ var ingredients = JSON.stringify(testarray);
 //     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
 //     }
 // });
+
+// function getRecipes(){
+//     // var inputVal = $('testarray').value;
+//     var inputVal = testarray;
+//     console.log("inputVal: " + inputVal);
+//     var upToIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=';
+//     var afterIngredients = '&number=200&mashape-key=OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H'
+
+//     var fridge = new XMLHttpRequest();
+//     fridge.open("GET", upToIngredients + inputVal + afterIngredients, false)
+//     fridge.send();
+//     console.log(fridge.response);
+
+//     var recipes = JSON.parse(fridge.response);
+
+// }
+
+//  getRecipes();
