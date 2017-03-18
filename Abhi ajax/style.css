@@ -1,0 +1,598 @@
+
+@import "http://fonts.googleapis.com/css?family=Raleway";
+
+#abc {
+width:100%;
+height:100%;
+opacity:.95;
+top:0;
+left:0;
+display:none;
+position:fixed;
+background-color:#313131;
+overflow:auto
+}
+img#closepop {
+width:20px;
+height:20px;
+position:absolute;
+right:5px;
+top:5px;
+cursor:pointer
+}
+div#popupContact {
+position:absolute;
+left:50%;
+top:17%;
+margin-left:-202px;
+font-family:'Raleway',sans-serif
+}
+#formpop {
+max-width:425px;
+min-width:350px;
+padding:10px 50px;
+border:2px solid gray;
+border-width: 2px;
+border-radius:10px;
+font-family:raleway;
+background-color:#fff
+}
+
+form #formpop {
+    margin:0;
+    padding-left: 10px;
+}
+
+#signupheader {
+background-color:#3A3D45;
+border:2px solid gray;
+color: #fff;
+padding:20px 35px;
+margin:-10px -50px;
+text-align:center;
+border-radius:6px 6px 0 0
+}
+hr {
+margin:10px -50px;
+border:0;
+border-top:1px solid #ccc
+}
+input[type=text] {
+width:82%;
+border:1px solid #ccc;
+padding-left:40px;
+padding-right:20px;
+font-size:16px;
+font-family:raleway
+}
+
+#name-input {
+ height: 40px;
+ margin-top: 30px;
+ padding-left: 40px; 
+ padding-right:20px;
+ border-radius: 7px;
+}
+
+#email-input {
+width:82%;
+height:40px;
+padding:0;
+resize:none;
+margin-top:30px;
+border:1px solid #ccc;
+border-radius: 5px;
+padding-left:40px;
+padding-right: 20px;
+font-size:16px;
+font-family:raleway;
+margin-bottom:20px
+
+}
+
+#comment-input {
+width:82%;
+height:100px;
+resize:none;
+border-radius: 5px;
+margin-top:30px;
+border:1px solid #ccc;
+padding-left:40px;
+padding-right:20px;
+padding-top: 10px;
+font-size:16px;
+font-family:raleway;
+margin-bottom:30px
+}
+#submit-input {
+margin: auto;
+margin-bottom: 25px;
+text-decoration:none;
+width:125px;
+text-align:center;
+display:block;
+background-color:#7DBF27;
+color:#fff;
+border:1px solid #FFCB00;
+padding:10px 0;
+font-size:20px;
+cursor:pointer;
+border-radius:5px
+}
+span {
+color:red;
+font-weight:700
+}
+
+.fa-user:before {
+    /* "login-icon"float: right;*/
+    /*padding-top: 10px;*/
+    /*padding-right: 10px;*/
+    color: #7DBF27;
+    /*text-align: center;*/
+
+ }
+
+
+body {
+    color: #333;
+}
+
+
+#popupContact {
+
+display: none;
+z-index: 10;
+
+
+
+}
+
+#login-icon:hover {
+
+cursor: pointer;
+
+
+}
+
+
+.windows-popup {
+
+white-space: nowrap;
+position: relative;
+padding: 10em 20em 10em 20em;
+height:40vh;  
+background-color: white;
+color:black;
+z-index: 10;
+position: relative;
+bottom: 4em;
+right:3em;
+display: none;
+}
+
+
+h1{
+
+    text-align: center;
+    padding-left: 20%;
+    padding-top: 3%;
+
+
+}
+
+
+.wp-content {
+
+    position: relative;
+    height:100vh;
+    width:100vw;
+    bottom:140px;
+    right:100%;
+    width:50vw;
+}
+
+
+
+#pop-button {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  width:8vw;
+  -webkit-border-radius: 19;
+  -moz-border-radius: 19;
+  border-radius: 19px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 27px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  margin-left: 100%;
+  margin-top: 18%;
+  cursor: pointer;
+}
+
+#pop-button:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+#pop-button:active {
+
+ background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+
+
+}
+
+a {
+    text-decoration: none;
+    /*color: #1b98f8;*/
+}
+
+.navbar-brand {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 25px;
+    text-align: center;
+    /*width: 95%;*/
+    
+}
+
+.navbar-header, 
+.navbar-default {
+    width: 100%;
+    
+}
+.navbar-default .navbar-brand {
+    color: #fff;
+    background-color: #3A3D45;
+    text-align: center;
+}
+/*#7DBF27*/
+#login-icon {
+    /*float: right;*/
+    padding-top: 10px;
+    /*padding-right: 10px;*/
+    color: #7DBF27;
+    text-align: center;
+    
+}
+.navbar {
+    
+    margin-bottom: 0px;
+    border-radius: 0px;
+    
+        border-color: rgb(37, 42, 58);
+    
+}
+
+
+.primary-button,
+.secondary-button {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0px;
+    width: 100%;
+    padding: 10px;
+
+}
+.primary-button {
+    color: #fff;
+    background: #7DBF27;
+    /*  margin: 1em 0;*/
+}
+.secondary-button {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: red;
+    padding: 0.5em 2em;
+    font-size: 80%;
+}
+
+/* * -- LAYOUT STYLES --
+ * This layout consists of three main elements, `#nav` (navigation bar), `#list` (email list), and `#main` (email content). All 3 elements are within `#layout`
+ */
+
+
+#layout, #nav, #list, #main {
+    margin: 0px;
+
+}
+/* Make the navigation 100% width on phones */
+#nav {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    /*background: rgb(37, 42, 58);*/
+    /*background: #3A3D45;*/
+    background: #7DBF27;
+    text-align: center;
+    font-weight: lighter;
+
+}
+
+.fridge-image {
+    display: block;
+    width: 5%;
+    vertical-align: middle;
+    padding-top: 5px;
+    /*padding-right: 50px;*/
+
+}
+
+/* Don't show the navigation items... */
+.nav-inner {
+    display: none;
+    color: white;
+}
+
+/*
+ * -- NAV BAR STYLES --
+ * Styling the default .pure-menu to look a little more unique.
+ */
+#nav .pure-menu {
+    background: transparent;
+    border: none;
+    text-align: left;
+}
+
+
+
+    #nav .pure-menu-link {
+        color: #fff;
+        /*margin-left: 0.5em;*/
+    }
+    #nav .pure-menu-heading {
+        border-bottom: none;
+        font-size:110%;
+        color: rgb(75, 113, 151);
+    }
+
+ .navbar-header .navbar-brand:hover,
+    .navbar-header .navbar-brand:focus {
+        color: #7DBF27;
+    }
+
+    .fa .fa-user #login-icon:hover,
+    .fa .fa-user #login-icon:focus {
+        font-color: #7DBF27;
+    }
+
+/*#flex-box .button-item:hover,
+#flex-box .button-item:focus {
+    background-color: #eee;
+    
+}*/
+
+.button-item-selected
+{
+    
+    color: #fff;
+    background: #F05733;
+}
+/*
+ * -- EMAIL STYLES --
+ * Styles relevant to the email messages, labels, counts, and more.
+ */
+
+.category-label-diary,
+.category-label-meat,
+.category-label-fruit {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 0.5em;
+    border-radius: 3px;
+}
+.category-label-diary {
+    background: #ffc94c;
+}
+.category-label-meat {
+    background: #41ccb4;
+}
+.category-label-fruit {
+    background: #40c365;
+}
+
+
+/* category Item Styles */
+.category-list {
+    padding: 0.9em 1em;
+    border-bottom: 1px solid #ddd; 
+}
+    .image-avatar {
+        border-radius: 3px;
+        margin-right: 0.5em;
+    }
+
+    .category-Item {
+        margin-right: 0px;
+    }
+    .pure-checkbox {
+        padding-top: 10px;
+        /*width: 120%;*/
+/*        transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -webkit-transform: scale(1.25);*/
+    }
+.pure-button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*border-radius: 0px;*/
+
+}
+
+.pure-form input[type=text] {
+    border-radius: 0px;
+    box-shadow: 0px 0px white;
+    width: 74%;
+    float: left;
+}
+
+.pure-form 
+button[type=submit] {
+        margin: .0em 0 0;
+        margin-left: 10px;
+        background-color: #F05733;
+    }
+
+#add-button {
+    border-radius: 0px;
+    margin-left: 10px;
+    padding-bottom: 14px;
+    
+}
+
+.button-item {
+        /*margin-left: 15px;*/
+        padding-right: 15px;
+        /*margin-right: 0.5em;*/
+        display: flex;
+    }
+.delete  { 
+        /*margin-right: 0.5em;*/
+        margin-left: 15px;
+    }
+.item {
+    margin-left: 10px;
+    padding-top: 10px;
+}
+h4 {
+    padding: 0px;
+    margin-right: 0px;
+}
+
+p {
+    margin-top: 10px;
+}
+/* main content
+
+
+
+*/
+
+
+
+.recipe-content {
+    padding: 30px;
+    
+}
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 40em) {
+
+    /* Move the layout over so we can fit the nav + list in on the left */
+    #layout {
+        padding-left:500px; /* "left col (nav + list)" width */
+        position: relative;
+    }
+
+    /* These are position:fixed; elements that will be in the left 500px of the screen */
+    #nav, #list {
+        position: fixed;
+        padding-top: 0px;
+        /*top: 0;*/
+        /*bottom: 0;*/
+        overflow: auto;
+    }
+    #nav {
+        margin-left:-500px; /* "left col (nav + list)" width */
+        width:150px;
+        height: 100%;
+    }
+
+    /* Show the menu items on the larger screen */
+    .nav-inner {
+        display: block;
+        padding: 0em 0;
+        font-size: 18px;
+    }
+
+    /* Hide the "Menu" button on larger screens */
+    #nav .nav-menu-button {
+        display: none;
+    }
+
+
+    #list {
+        margin-left: -350px;
+        width: 100%;
+        /*height: 33%;*/
+        border-bottom: 1px solid #ddd;
+        margin-right: 200px;
+    }
+.fridge-image {
+    display: block;
+    width: 100%;
+    padding-top: 30px;
+    vertical-align: middle;
+
+}
+
+    #main {
+        position: fixed;
+        /*top: 33%;*/
+        right: -10px;
+        bottom: 0;
+        left: 150px;
+        overflow: auto;
+        width: auto; /* so that it's not 100% */
+    }
+
+
+
+}
+
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ * On desktops and other large-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 60em) {
+
+    /* This will take up the entire height, and be a little thinner */
+    #list {
+        margin-left: -350px;
+        margin-right: 0px;
+        width:300px;
+        height: 100%;
+        border-right: 1px solid #ddd;
+    }
+
+
+.fridge-image {
+    display: block;
+    width: 100%;
+    padding-top: 30px;
+    vertical-align: middle;
+
+}
+
+
+    /* This will now take up it's own column, so don't need position: fixed; */
+    #main {
+        position: static;
+        margin-left: -40px;
+        padding: 0;
+    }
+
+}
+
