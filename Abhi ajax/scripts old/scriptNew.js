@@ -181,98 +181,89 @@ var arraytest = JSON.stringify(firstArray);
 //console.log("arraytest: " + arraytest);
 
 
-function request(arraytest) {
+
+// var recipes = JSON.parse(data)
+// function createHTML() {
+//     var title = [];
+//     var img = [];function request(arraytest) {
     // //recipe request, printing to console
+
+    var recipes;
+    var nameSpan = [];
+    var ingredientsMissingSpan = [];
+    var recipeDiv = [];
+    var img = [];
+    var title = [];
+    var ingredientsMissing = [];
+
+    function createHTML(){
+    
+    var recipeContainer = document.createElement("div");
+    recipeContainer.setAttribute("id", "recipeContainer");
+    for (var i = 0; i < recipes.length; i++) {
+         //Create a new div in each loop with an id of recipeDiv0, recipeDiv1... so you get a div for each recipe
+         recipeDiv[i] = document.createElement("div");
+         recipeDiv[i].setAttribute("id", "recipeDiv" + i);
+
+         //Create span with id of nameSpan0, nameSpan1... to contain name of dish; and create and append the actual name of dish to said span
+         nameSpan[i] = document.createElement("span");
+         nameSpan[i].setAttribute("id", "nameSpan" + i);
+         title[i] = document.createTextNode(recipes[i].title);
+         nameSpan[i].appendChild(title[i]);
+
+         //         //Create img tag with id of img0, im1... to contain image;
+         img[i] = document.createElement("img");
+         img[i].setAttribute("id", "img" + i);
+         img[i].setAttribute("src", recipes[i].image);
+
+         //Create span with id of ingredientsMissingSpan0, ingredientsMissingSpan1... to contain number of missing ingredients; and create and append textNode containing the actual number of missing ingredients to said span
+         // ingredientsMissingSpan[i] = document.createElement("span");
+         // ingredientsMissingSpan[i].setAttribute("id", "ingredientsMissingSpan" + i);
+         // ingredientsMissing[i] = document.createTextNode("Number of missing ingredients: " + recipes[i].missedIngredientCount);
+         // ingredientsMissing[i].appendChild(ingredientsMissingSpan[i]);
+
+         // recipeContainer.appendChild(recipeDiv[i]);
+         $("#demo").append(recipeDiv[i]);
+         } 
+     
+// document.body.appendChild(demo);
+
+//reateHTML();
+
+}
+
     $.ajax({
         url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients',
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {ingredients: arraytest}, //JSON.stringify({testarray}), //Additional parameters here
         dataType: 'json',
         success: function(data) {
-
-            // var data2 = JSON.stringify(data);
-            // var recipes = data2;
-            // document.getElementById("demo").innerHTML= data2;
-            //console.log((data)); 
-            for(var i = 0; i<data.length; i++){
-                var item = data[i];
-                var title = item.title;
-                var image = item.image;
-                var id = item.id;
-                console.log(title, image);
-                $('#demo').append('<h1>'+title+'</h1>');
-                $('#demo').append('<img src="'+image+'">');
-                //$('#demo').append('<p>' + id + '</p>');
-                $('#demo').append('<br>');
-
-                    function calories(){
-//var id = ["653352"]
-//var ID = JSON.stringify(id)
-var queryURL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information?includeNutrition=true";
-$.ajax({
-    //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer',
-    //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/{id}/information',
-    url: queryURL,
-    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-    data: {id: id}, //{},  // Additional parameters here
-    dataType: 'json',
-    success: function(response) { 
-        // document.getElementById("demo2").innerHTML = data;
-        //console.log((response));
-        console.log(response.sourceURL);
-        
-        for(var j = 0; j<response.length; j++){
-                var items = response[j];
-                var sourceURL = items.sourceURL;
-                var nutrition = items.nutrition;
-                var testsource = JSON.stringify(sourceURL);
-                console.log(testsource);
-                console.log(sourceURL);
-                $('#demo').append(sourceURL);
-                $('#demo').append(nutrition);
-
-
-            }//end for loop  
-
-         }, // end success
-    error: function(err) { alert(err); },
-    beforeSend: function(xhr) {
-    xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
-    }
- })
-};
- calories();
-
-            }// end of for loop
-
-        },//end of success
+            var data2 = JSON.stringify(data);
+            recipes = data2;
+            document.getElementById("demo").innerHTML= data2;
+            console.log((data)); 
+            createHTML(); },
             error: function(err) { alert(err); },
             beforeSend: function(xhr) {
             xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
         }
     });
-}
 
 
+    
 
 
+// function getAnswer(){
 
-
-
-
-
-
-//  function calories(){
 
 // $.ajax({
-//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer?q=How+many+calories+in+an+apple',
-//     //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/{id}/information',
+//     //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer',
+//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer?q=How+much+vitamin+c+is+in+2+apples%3F',
 //     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
 //     data: {}, //{answer: inputValu}, // Additional parameters here
 //     dataType: 'json',
 //     success: function(data) { 
-//         //document.getElementById("demo2").innerHTML = data;
-//         // $("demo").append()
+//         document.getElementById("demo2").innerHTML = data;
 //         console.log((data)); },
 //     error: function(err) { alert(err); },
 //     beforeSend: function(xhr) {
@@ -280,8 +271,6 @@ $.ajax({
 //     }
 //  })
 // };
-
-// calories();
 
 // $("#mainInput").on(function(e) {
 //     if (e.keyCode === 13) {

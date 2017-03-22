@@ -53,8 +53,6 @@ database.ref().on("child_added", function(snapshot) {
         var itemID = $(this).attr('data-buttons');
         $("." + itemID).empty();
     });
-    arraytest = JSON.stringify(firstArray);
-    request(arraytest);
 });
 
 $("#mainInput").on(function(e) {
@@ -170,140 +168,54 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 // document.getElementById("demo").innerHTML = ingredients;
 // console.log(ingredients)
 
-
 //stringify using test array for functionality
 var testarray = ["eggs", "milk", "butter"];
 var ingredients = JSON.stringify(testarray);
 //document.getElementById("demo").innerHTML = ingredients;//test display
 // console.log(ingredients)
-console.log(firstArray);
-var arraytest = JSON.stringify(firstArray);
-//console.log("arraytest: " + arraytest);
+// console.log(testarray)
+
+//recipe request, printing to console
+// $.ajax({
+//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1',
+//     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+//     data: {}, //JSON.stringify({testarray}), //Additional parameters here
+//     dataType: 'json',
+//     success: function(data) {
+//     document.getElementById("demo").innerHTML = data; 
+//      console.log((data)); },
+//     error: function(err) { alert(err); },
+//     beforeSend: function(xhr) {
+//     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
+//     }
+// });
+
+//quick answer api currently printing to console
+var inputValu = document.getElementById('mainInput2').value;
 
 
-function request(arraytest) {
-    // //recipe request, printing to console
-    $.ajax({
-        url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients',
-        type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-        data: {ingredients: arraytest}, //JSON.stringify({testarray}), //Additional parameters here
-        dataType: 'json',
-        success: function(data) {
+$(".work").on("click" , function () {
 
-            // var data2 = JSON.stringify(data);
-            // var recipes = data2;
-            // document.getElementById("demo").innerHTML= data2;
-            //console.log((data)); 
-            for(var i = 0; i<data.length; i++){
-                var item = data[i];
-                var title = item.title;
-                var image = item.image;
-                var id = item.id;
-                console.log(title, image);
-                $('#demo').append('<h1>'+title+'</h1>');
-                $('#demo').append('<img src="'+image+'">');
-                //$('#demo').append('<p>' + id + '</p>');
-                $('#demo').append('<br>');
+getAnswer();
 
-                    function calories(){
-//var id = ["653352"]
-//var ID = JSON.stringify(id)
-var queryURL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information?includeNutrition=true";
+});
+
+
+function getAnswer(){
+
+
 $.ajax({
     //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer',
-    //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/{id}/information',
-    url: queryURL,
+    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer?q=How+much+vitamin+c+is+in+2+apples%3F',
     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-    data: {id: id}, //{},  // Additional parameters here
+    data: {}, //{answer: inputValu}, // Additional parameters here
     dataType: 'json',
-    success: function(response) { 
-        // document.getElementById("demo2").innerHTML = data;
-        //console.log((response));
-        console.log(response.sourceURL);
-        
-        for(var j = 0; j<response.length; j++){
-                var items = response[j];
-                var sourceURL = items.sourceURL;
-                var nutrition = items.nutrition;
-                var testsource = JSON.stringify(sourceURL);
-                console.log(testsource);
-                console.log(sourceURL);
-                $('#demo').append(sourceURL);
-                $('#demo').append(nutrition);
-
-
-            }//end for loop  
-
-         }, // end success
+    success: function(data) { 
+        document.getElementById("demo2").innerHTML = data;
+        console.log((data)); },
     error: function(err) { alert(err); },
     beforeSend: function(xhr) {
     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
     }
  })
 };
- calories();
-
-            }// end of for loop
-
-        },//end of success
-            error: function(err) { alert(err); },
-            beforeSend: function(xhr) {
-            xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
-        }
-    });
-}
-
-
-
-
-
-
-
-
-
-
-//  function calories(){
-
-// $.ajax({
-//     url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/quickAnswer?q=How+many+calories+in+an+apple',
-//     //url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/{id}/information',
-//     type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-//     data: {}, //{answer: inputValu}, // Additional parameters here
-//     dataType: 'json',
-//     success: function(data) { 
-//         //document.getElementById("demo2").innerHTML = data;
-//         // $("demo").append()
-//         console.log((data)); },
-//     error: function(err) { alert(err); },
-//     beforeSend: function(xhr) {
-//     xhr.setRequestHeader("X-Mashape-Authorization", "OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H"); // Enter here your Mashape key
-//     }
-//  })
-// };
-
-// calories();
-
-// $("#mainInput").on(function(e) {
-//     if (e.keyCode === 13) {
-//         getAnswer();
-
-//     }
-//     });
-
-// function getRecipes(){
-//     // var inputVal = $('testarray').value;
-//     var inputVal = testarray;
-//     console.log("inputVal: " + inputVal);
-//     var upToIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=';
-//     var afterIngredients = '&number=200&mashape-key=OeA9zYKXGCmshtbXfBTFYCxry6BWp1HRLTzjsn8QLMm8dbmC0H'
-
-//     var fridge = new XMLHttpRequest();
-//     fridge.open("GET", upToIngredients + inputVal + afterIngredients, false)
-//     fridge.send();
-//     console.log(fridge.response);
-
-//     var recipes = JSON.parse(fridge.response);
-
-// }
-
-//  getRecipes();
